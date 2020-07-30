@@ -32,6 +32,10 @@ module Jekyll
       end
       alias_method :to_s, :path
 
+      def path_raw
+        @path_raw ||= raw_path if raw_path
+      end
+
       private
 
       attr_accessor :page

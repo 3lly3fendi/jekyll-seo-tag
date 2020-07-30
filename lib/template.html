@@ -29,8 +29,9 @@
   <meta property="og:site_name" content="{{ seo_tag.site_title }}" />
 {% endif %}
 
+{% capture path_raw %}{% asset '{{ seo_tag.image.path_raw }}' @path %}{% endcapture %}
 {% if seo_tag.image %}
-  <meta property="og:image" content="{{ seo_tag.image.path }}" />
+  <meta property="og:image" content="{{ path_raw | absolute_url }}" />
   {% if seo_tag.image.height %}
     <meta property="og:image:height" content="{{ seo_tag.image.height }}" />
   {% endif %}
@@ -54,7 +55,7 @@
 {% if site.twitter %}
   {% if seo_tag.image %}
     <meta name="twitter:card" content="{{ page.twitter.card | default: site.twitter.card | default: "summary_large_image" }}" />
-    <meta property="twitter:image" content="{{ seo_tag.image.path }}" />
+    <meta property="twitter:image" content="{{ path_raw | absolute_url }}" />
   {% else %}
     <meta name="twitter:card" content="summary" />
   {% endif %}
